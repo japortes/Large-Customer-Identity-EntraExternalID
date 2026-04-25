@@ -1,32 +1,5 @@
-**Global Multi-Brand Loyalty Platform  
-**Unified Identity Architecture with Microsoft Entra External ID  
-*Improved Implementation-Ready Design for US, EU, and Asia*
-
 <table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><p><strong>Architecture Decision Summary</strong></p>
-<p>Adopt a two-tenant Microsoft Entra External ID baseline (US and EU), with a minimal Global Discovery Service for home-region routing, regional BFF/API stacks, regional profile stores in Cosmos DB, centralized application-layer authorization, and a trigger-based path to add an APAC tenant if legal or operating requirements require regional identity/data residency.</p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
 
-| **Document Field** | **Value**                                                                                                                                                 |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Prepared for       | Global loyalty platform / multi-brand customer identity program                                                                                           |
-| Version            | 2.4 - tenant drift, app registration automation, risk, Customer 360, campaign scaling update                                                              |
-| Date               | April 24, 2026                                                                                                                                            |
-| Primary audience   | CISO, Security Architects, Identity Architects, Application Platform Owners, Data Protection and Privacy stakeholders                                     |
-| Scope              | Customer identity, authentication, authorization, profile data access, routing, and regional operating model for a global loyalty platform across brands. |
-
-# Table of Contents
-
-This document uses Word heading styles. To generate or refresh the table of contents in Microsoft Word, select References \> Table of Contents, or right-click this page after opening the document and choose Update Field.
 
 # 1. Executive Summary
 
@@ -48,19 +21,7 @@ The recommended architecture is not a single global identity tenant. It uses two
 | Campaign and peak scaling     | Add a formal campaign readiness model with pre-registration, virtual waiting rooms/queues where appropriate, warm-up, feature flags, and degradation modes.                                                               | Prevents marketing campaigns from overwhelming sign-up/sign-in, profile, entitlement, and loyalty redemption paths.                                                                     |
 | Tenant configuration drift    | Manage External ID tenant configuration and app registrations as identity infrastructure-as-code with automated drift detection, template-based app registration factory, synthetic auth testing, and evidence retention. | Prevents regional inconsistencies, app registration sprawl, unauthorized redirect URI changes, token-claim drift, Conditional Access drift, and audit gaps as brands and regions scale. |
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><p><strong>Improved Positioning</strong></p>
-<p>The architecture should be described as one global reference architecture with regional instantiations, not one global tenant. The identity plane, data plane, operations, and privacy controls should all be regionalized where customer identity or profile data is involved.</p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
+
 
 # 2. Architecture Principles
 
